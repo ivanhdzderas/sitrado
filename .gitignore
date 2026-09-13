@@ -1,0 +1,7 @@
+/vendor/
+/node_modules/
+.env
+*.log
+.DS_Store
+.vscode/
+.idea/-e "/vendor/\n/node_modules/\n.env\n*.log\n.DS_Store\n.vscode/\n.idea/" 

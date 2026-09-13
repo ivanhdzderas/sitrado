@@ -1,0 +1,709 @@
+:root {
+  --archiva-ink: #12263a;
+  --archiva-muted: #5b6b7c;
+  --archiva-line: #d7e0ea;
+  --archiva-paper: #eef3f8;
+  --archiva-surface: #ffffff;
+  --archiva-brand: #0b5cab;
+  --archiva-brand-dark: #084785;
+  --archiva-accent: #0f8a74;
+  --archiva-shadow: 0 12px 28px rgba(18, 38, 58, 0.08);
+  --archiva-radius: 1rem;
+  --archiva-sidebar: 268px;
+  --archiva-font: "Source Sans 3", "Segoe UI", sans-serif;
+  --archiva-display: "Literata", Georgia, serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  min-height: 100%;
+}
+
+body.archiva-body {
+  margin: 0;
+  font-family: var(--archiva-font);
+  color: var(--archiva-ink);
+  background:
+    radial-gradient(circle at top left, rgba(11, 92, 171, 0.1), transparent 42%),
+    radial-gradient(circle at top right, rgba(15, 138, 116, 0.08), transparent 36%),
+    linear-gradient(180deg, #f5f8fb 0%, var(--archiva-paper) 100%);
+}
+
+a {
+  color: var(--archiva-brand);
+}
+
+/* —— Login —— */
+.archiva-login {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 1.5rem;
+  background:
+    linear-gradient(145deg, rgba(8, 71, 133, 0.94), rgba(15, 138, 116, 0.78)),
+    #0b2740;
+}
+
+.archiva-login-panel {
+  width: min(420px, 100%);
+  background: var(--archiva-surface);
+  border-radius: 1.25rem;
+  padding: 2rem;
+  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.28);
+}
+
+.archiva-login-panel .brand {
+  font-family: var(--archiva-display);
+  font-size: 2.1rem;
+  color: var(--archiva-brand);
+  margin: 0 0 0.35rem;
+}
+
+.archiva-login-panel .lede {
+  color: var(--archiva-muted);
+  margin-bottom: 1.5rem;
+}
+
+.btn-archiva {
+  --bs-btn-color: #fff;
+  --bs-btn-bg: var(--archiva-brand);
+  --bs-btn-border-color: var(--archiva-brand);
+  --bs-btn-hover-color: #fff;
+  --bs-btn-hover-bg: var(--archiva-brand-dark);
+  --bs-btn-hover-border-color: var(--archiva-brand-dark);
+  --bs-btn-active-color: #fff;
+  --bs-btn-active-bg: var(--archiva-brand-dark);
+  --bs-btn-active-border-color: var(--archiva-brand-dark);
+  --bs-btn-disabled-color: #fff;
+  --bs-btn-disabled-bg: var(--archiva-brand);
+  --bs-btn-disabled-border-color: var(--archiva-brand);
+}
+
+/* —— App shell —— */
+.archiva-shell {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: var(--archiva-sidebar) 1fr;
+}
+
+.archiva-sidebar {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow: auto;
+  padding: 1.1rem 0.9rem 1.5rem;
+  color: #d7e4f2;
+  background: linear-gradient(180deg, #0a2a4a 0%, #102338 100%);
+}
+
+.archiva-brand-block {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+  padding: 0.35rem 0.65rem 1rem;
+  margin-bottom: 0.75rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.archiva-logo {
+  width: 2.5rem;
+  height: 2.5rem;
+  object-fit: contain;
+  border-radius: 0.5rem;
+  background: #fff;
+  flex-shrink: 0;
+}
+
+.archiva-login-logo {
+  display: block;
+  max-width: 7.5rem;
+  max-height: 4rem;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  margin: 0 auto 1rem;
+}
+
+.archiva-mark {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 0.75rem;
+  display: grid;
+  place-items: center;
+  font-family: var(--archiva-display);
+  font-weight: 700;
+  color: #fff;
+  background: linear-gradient(135deg, var(--archiva-accent), #17a58c);
+}
+
+.archiva-brand-block strong {
+  display: block;
+  font-family: var(--archiva-display);
+  font-size: 1.2rem;
+  color: #fff;
+  line-height: 1.1;
+}
+
+.archiva-brand-block small {
+  display: block;
+  color: rgba(215, 228, 242, 0.65);
+  font-size: 0.72rem;
+  line-height: 1.25;
+  max-width: 11.5rem;
+}
+
+.archiva-user {
+  display: flex;
+  gap: 0.7rem;
+  align-items: center;
+  padding: 0.75rem;
+  margin-bottom: 0.85rem;
+  border-radius: 0.9rem;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.archiva-avatar {
+  width: 2.35rem;
+  height: 2.35rem;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-weight: 700;
+  color: #fff;
+  background: #1d4f7c;
+  flex-shrink: 0;
+}
+
+.archiva-nav-label {
+  margin: 0.85rem 0.7rem 0.35rem;
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  opacity: 0.5;
+}
+
+.archiva-nav .nav-link {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  color: #c9d7e8;
+  border-radius: 0.7rem;
+  padding: 0.58rem 0.75rem;
+  margin-bottom: 0.12rem;
+}
+
+.archiva-nav .nav-link:hover,
+.archiva-nav .nav-link.active {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.archiva-main {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.archiva-topbar {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.9rem 1.35rem;
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--archiva-line);
+}
+
+.archiva-topbar h1 {
+  margin: 0;
+  font-family: var(--archiva-display);
+  font-size: 1.3rem;
+  color: var(--archiva-ink);
+}
+
+.archiva-notify-slot {
+  min-height: 2rem;
+  display: flex;
+  align-items: center;
+}
+
+.archiva-notify {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  border: 1px solid var(--archiva-line);
+  background: #fff;
+  color: var(--archiva-ink);
+  border-radius: 999px;
+  padding: 0.35rem 0.75rem;
+  font-weight: 600;
+  font-size: 0.88rem;
+  box-shadow: 0 4px 12px rgba(18, 38, 58, 0.06);
+}
+
+.archiva-notify:hover:not(:disabled),
+.archiva-notify.has-items:hover {
+  background: #eaf2fb;
+  border-color: #b7cae0;
+  color: var(--archiva-brand);
+}
+
+.archiva-notify:disabled {
+  opacity: 0.7;
+  cursor: default;
+}
+
+.archiva-notify .notify-badge {
+  min-width: 1.4rem;
+  height: 1.4rem;
+  padding: 0 0.35rem;
+  border-radius: 999px;
+  display: inline-grid;
+  place-items: center;
+  background: #c2410c;
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.archiva-notify .notify-badge.muted {
+  background: #94a3b8;
+}
+
+.archiva-notify.has-items {
+  border-color: #f0c2a8;
+  background: #fff7f2;
+}
+
+#modalpendiente .modal-content {
+  border: 0;
+  border-radius: 1rem;
+  box-shadow: 0 24px 48px rgba(18, 38, 58, 0.18);
+}
+
+#modalpendiente .modal-header {
+  border-bottom: 1px solid var(--archiva-line);
+}
+
+#modalpendiente .modal-title {
+  font-family: var(--archiva-display);
+}
+
+.archiva-content {
+  padding: 1.25rem 1.35rem 2.5rem;
+}
+
+.archiva-menu-toggle {
+  display: none;
+}
+
+.archiva-backdrop {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 30;
+  background: rgba(18, 38, 58, 0.45);
+}
+
+/* —— Home tiles —— */
+.archiva-home-intro h2 {
+  font-family: var(--archiva-display);
+  font-size: clamp(1.55rem, 2.4vw, 2.1rem);
+  margin: 0 0 0.4rem;
+}
+
+.archiva-home-intro p {
+  margin: 0 0 1.35rem;
+  color: var(--archiva-muted);
+  max-width: 48ch;
+}
+
+.archiva-tile {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  min-height: 9.5rem;
+  height: 100%;
+  text-align: left;
+  border: 1px solid var(--archiva-line);
+  border-radius: var(--archiva-radius);
+  background: var(--archiva-surface);
+  box-shadow: var(--archiva-shadow);
+  padding: 1.15rem 1rem;
+  transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+}
+
+.archiva-tile:hover {
+  transform: translateY(-3px);
+  border-color: #b7cae0;
+  box-shadow: 0 16px 32px rgba(11, 92, 171, 0.14);
+}
+
+.archiva-tile .code {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 3.1rem;
+  height: 2.35rem;
+  padding: 0 0.65rem;
+  border-radius: 0.55rem;
+  font-family: var(--archiva-display);
+  font-weight: 700;
+  font-size: 0.95rem;
+  letter-spacing: 0.04em;
+  color: #fff;
+  background: var(--archiva-brand);
+}
+
+.archiva-tile .label {
+  font-weight: 650;
+  font-size: 1.02rem;
+  color: var(--archiva-ink);
+  line-height: 1.25;
+}
+
+.archiva-tile .hint {
+  margin-top: auto;
+  font-size: 0.8rem;
+  color: var(--archiva-muted);
+}
+
+.archiva-tile[data-tone="navy"] .code { background: #0b5cab; }
+.archiva-tile[data-tone="teal"] .code { background: #0f8a74; }
+.archiva-tile[data-tone="slate"] .code { background: #3d5368; }
+.archiva-tile[data-tone="amber"] .code { background: #b86a12; }
+.archiva-tile[data-tone="forest"] .code { background: #1f7a45; }
+.archiva-tile[data-tone="wine"] .code { background: #8f2f4a; }
+.archiva-tile[data-tone="indigo"] .code { background: #3b4f9a; }
+.archiva-tile[data-tone="copper"] .code { background: #a45328; }
+
+/* —— Content panels —— */
+.archiva-panel {
+  background: var(--archiva-surface);
+  border: 1px solid var(--archiva-line);
+  border-radius: var(--archiva-radius);
+  box-shadow: var(--archiva-shadow);
+  padding: 1.25rem;
+}
+
+.archiva-panel > .panel-title {
+  font-family: var(--archiva-display);
+  font-size: 1.25rem;
+  margin: 0 0 1rem;
+}
+
+.archiva-panel .table {
+  margin-bottom: 0;
+}
+
+.archiva-panel .table thead th {
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--archiva-muted);
+  border-bottom-width: 1px;
+}
+
+.archiva-action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2.4rem;
+  height: 2rem;
+  padding: 0 0.55rem;
+  border-radius: 0.45rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--archiva-brand);
+  background: #eaf2fb;
+  text-decoration: none;
+}
+
+.archiva-action:hover {
+  color: #fff;
+  background: var(--archiva-brand);
+}
+
+.archiva-action-wide {
+  min-width: 3.2rem;
+}
+
+/* Kill / neutralize Material Dashboard leftovers */
+.wrapper > .sidebar,
+.sidebar[data-color],
+.navbar-absolute,
+.perfect-scrollbar-on .sidebar,
+.main-panel > .navbar {
+  display: none !important;
+}
+
+.main-panel,
+.content,
+.container-fluid {
+  width: 100% !important;
+  float: none !important;
+  margin: 0 !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  background: transparent !important;
+}
+
+.card,
+.card-stats,
+.card-chart,
+.wizard-card {
+  border: 1px solid var(--archiva-line) !important;
+  border-radius: var(--archiva-radius) !important;
+  box-shadow: var(--archiva-shadow) !important;
+  background: var(--archiva-surface) !important;
+}
+
+.card .card-header-icon,
+.card .card-header-primary,
+.card .card-header-rose,
+.card .card-header-warning,
+.card .card-header-info,
+.card .card-header-success,
+.card .card-header-danger {
+  background: var(--archiva-brand) !important;
+  box-shadow: none !important;
+  margin: 0 0 1rem !important;
+  border-radius: 0.75rem !important;
+}
+
+.card-title,
+.wizard-title,
+.info-text {
+  font-family: var(--archiva-display) !important;
+  color: var(--archiva-ink) !important;
+}
+
+.btn-fill,
+.btn-wd,
+.btn-round,
+.btn-just-icon {
+  border-radius: 0.55rem !important;
+}
+
+.btn-primary,
+.btn-info,
+.btn-rose,
+.btn-fill.btn-primary,
+.btn-fill.btn-info {
+  background-color: var(--archiva-brand) !important;
+  border-color: var(--archiva-brand) !important;
+  color: #fff !important;
+  box-shadow: none !important;
+}
+
+.btn-success,
+.btn-fill.btn-success {
+  background-color: var(--archiva-accent) !important;
+  border-color: var(--archiva-accent) !important;
+  box-shadow: none !important;
+}
+
+/* Sin fuente Material: el texto unicode del legado no se muestra */
+.material-icons {
+  font-size: 0 !important;
+  line-height: 0 !important;
+  width: 0 !important;
+  height: 0 !important;
+  overflow: hidden !important;
+  display: inline-block !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* Botones de acción con texto: visibles aunque queden leftovers Material colapsados */
+.btn.btn-sm,
+a.btn.btn-sm {
+  font-size: 0.8125rem !important;
+  line-height: 1.5 !important;
+  white-space: nowrap;
+}
+
+.choice,
+.wizard-navigation,
+.wizard-footer .btn-next,
+.wizard-footer .btn-previous {
+  border-radius: 0.75rem !important;
+}
+
+/* —— Stepper Archiva (reemplazo del wizard Material) —— */
+.archiva-stepper {
+  background: var(--archiva-surface);
+  border: 1px solid var(--archiva-line);
+  border-radius: var(--archiva-radius);
+  box-shadow: var(--archiva-shadow);
+  padding: 1.25rem 1.35rem 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.archiva-stepper-title {
+  font-family: var(--archiva-display);
+  font-size: 1.35rem;
+  margin: 0 0 0.35rem;
+  color: var(--archiva-ink);
+}
+
+.archiva-stepper-summary {
+  color: #64748b;
+  font-size: 0.92rem;
+  min-height: 1.4rem;
+  margin-bottom: 1.1rem;
+}
+
+.archiva-steps {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  list-style: none;
+  margin: 0 0 1.25rem;
+  padding: 0;
+  counter-reset: archiva-step;
+}
+
+.archiva-steps li {
+  flex: 1 1 120px;
+  min-width: 110px;
+}
+
+.archiva-steps button {
+  width: 100%;
+  border: 1px solid var(--archiva-line);
+  background: #f8fafc;
+  color: #475569;
+  border-radius: 0.75rem;
+  padding: 0.55rem 0.65rem;
+  text-align: left;
+  font-size: 0.78rem;
+  font-weight: 600;
+  line-height: 1.25;
+  transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+}
+
+.archiva-steps button::before {
+  counter-increment: archiva-step;
+  content: counter(archiva-step);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.35rem;
+  height: 1.35rem;
+  margin-right: 0.4rem;
+  border-radius: 999px;
+  background: #dbe7f5;
+  color: var(--archiva-brand);
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+
+.archiva-steps li.active button,
+.archiva-steps button:hover {
+  background: #eaf2fb;
+  border-color: var(--archiva-brand);
+  color: var(--archiva-ink);
+}
+
+.archiva-steps li.active button::before,
+.archiva-steps li.done button::before {
+  background: var(--archiva-brand);
+  color: #fff;
+}
+
+.archiva-steps li.done button {
+  border-color: #9ec0e4;
+}
+
+.archiva-stepper .tab-pane {
+  display: none;
+}
+
+.archiva-stepper .tab-pane.active {
+  display: block;
+}
+
+.archiva-stepper .titu,
+.archiva-stepper h4.titu,
+.archiva-stepper .form-group > .titu {
+  display: block;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  margin-bottom: 0.35rem;
+}
+
+.archiva-stepper-footer {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-top: 1.25rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--archiva-line);
+}
+
+.archiva-stepper-footer .btn-finish {
+  display: none;
+}
+
+.choice {
+  border: 1px solid var(--archiva-line) !important;
+  background: #f8fafc !important;
+  box-shadow: none !important;
+}
+
+.choice.active,
+.choice:hover {
+  border-color: var(--archiva-brand) !important;
+  background: #eaf2fb !important;
+}
+
+@media (max-width: 991.98px) {
+  .archiva-shell {
+    grid-template-columns: 1fr;
+  }
+
+  .archiva-sidebar {
+    position: fixed;
+    inset: 0 auto 0 0;
+    width: min(280px, 88vw);
+    z-index: 40;
+    transform: translateX(-105%);
+    transition: transform 0.22s ease;
+  }
+
+  .archiva-sidebar.is-open {
+    transform: translateX(0);
+  }
+
+  .archiva-menu-toggle {
+    display: inline-flex;
+  }
+
+  .archiva-backdrop.is-visible {
+    display: block;
+  }
+}
+
+/* Modales por encima del shell (sidebar / topbar) */
+.modal {
+  z-index: 1080 !important;
+}
+
+.modal-backdrop {
+  z-index: 1070 !important;
+}

@@ -1,0 +1,113 @@
+<?php
+
+use CodeIgniter\Router\RouteCollection;
+
+/** @var RouteCollection $routes */
+
+// Default → login
+$routes->get('/', 'Login::index');
+$routes->get('login', 'Login::index');
+$routes->post('login/user_login_process', 'Login::user_login_process');
+$routes->get('logout', 'Login::logout');
+
+// Pretty URLs (legacy CI3)
+$routes->match(['get', 'post'], 'empresas', 'Login::empresas');
+$routes->match(['get', 'post'], 'empresas/(:num)', 'Login::empresas/$1');
+$routes->match(['get', 'post'], 'documentos', 'Login::documentos');
+$routes->match(['get', 'post'], 'documentos/(:num)', 'Login::documentos/$1');
+$routes->match(['get', 'post'], 'documentos/(:num)/(:any)', 'Login::documentos/$1/$2');
+$routes->match(['get', 'post'], 'documentos/(:num)/(:any)/(:num)', 'Login::documentos/$1/$2/$3');
+$routes->match(['get', 'post'], 'usuarios', 'Login::usuarios');
+$routes->match(['get', 'post'], 'usuarios/(:num)', 'Login::usuarios/$1');
+$routes->match(['get', 'post'], 'elimina_grupo', 'Login::elimina_grupo');
+$routes->match(['get', 'post'], 'elimina_grupo/(:num)', 'Login::elimina_grupo/$1');
+$routes->match(['get', 'post'], 'elimina_grupo/(:num)/(:num)', 'Login::elimina_grupo/$1/$2');
+$routes->match(['get', 'post'], 'elimina_subgrupo', 'Login::elimina_subgrupo');
+$routes->match(['get', 'post'], 'elimina_subgrupo/(:num)', 'Login::elimina_subgrupo/$1');
+$routes->match(['get', 'post'], 'elimina_subgrupo/(:num)/(:num)', 'Login::elimina_subgrupo/$1/$2');
+$routes->match(['get', 'post'], 'elimina_menu', 'Login::elimina_menu');
+$routes->match(['get', 'post'], 'elimina_menu/(:num)', 'Login::elimina_menu/$1');
+$routes->match(['get', 'post'], 'elimina_menu/(:num)/(:num)', 'Login::elimina_menu/$1/$2');
+$routes->get('descargar/(:any)', 'Login::descargar/$1');
+$routes->match(['get', 'post'], 'do_upload', 'Login::do_upload');
+$routes->match(['get', 'post'], 'menus', 'Login::menus');
+$routes->match(['get', 'post'], 'menus/(:num)', 'Login::menus/$1');
+$routes->match(['get', 'post'], 'agrega_menu', 'Login::agrega_menu');
+$routes->match(['get', 'post'], 'agrega_submenu', 'Login::agrega_submenu');
+$routes->match(['get', 'post'], 'elimina_submenu/(:num)/(:num)', 'Login::elimina_submenu/$1/$2');
+$routes->match(['get', 'post'], 'documento/(:num)', 'Login::documento/$1');
+$routes->match(['get', 'post'], 'documento/(:num)/(:any)', 'Login::documento/$1/$2');
+$routes->match(['get', 'post'], 'empresa/(:num)', 'Login::empresa/$1');
+$routes->match(['get', 'post'], 'leer', 'Login::leer');
+$routes->match(['get', 'post'], 'leer/(:num)', 'Login::leer/$1');
+$routes->match(['get', 'post'], 'doc/(:num)/(:num)', 'Login::doc/$1/$2');
+$routes->match(['get', 'post'], 'juntas', 'Login::juntas');
+$routes->match(['get', 'post'], 'juntas/(:any)', 'Login::juntas/$1');
+$routes->match(['get', 'post'], 'temas', 'Login::temas');
+$routes->match(['get', 'post'], 'lista_temas_sin_guardar', 'Login::lista_temas_sin_guardar');
+$routes->match(['get', 'post'], 'elimina_tema/(:any)', 'Login::elimina_tema/$1');
+$routes->match(['get', 'post'], 'combocados', 'Login::combocados');
+$routes->match(['get', 'post'], 'lista_a_combocar', 'Login::lista_a_combocar');
+$routes->match(['get', 'post'], 'elimina_combo/(:any)', 'Login::elimina_combo/$1');
+$routes->match(['get', 'post'], 'asigna_temas', 'Login::asigna_temas');
+$routes->match(['get', 'post'], 'detallado_temas', 'Login::detallado_temas');
+$routes->match(['get', 'post'], 'detallado_temas/(:any)', 'Login::detallado_temas/$1');
+$routes->match(['get', 'post'], 'alertas', 'Login::alertas');
+$routes->match(['get', 'post'], 'pendientes_juntas', 'Login::pendientes_juntas');
+$routes->match(['get', 'post'], 'subir', 'Login::subir');
+$routes->match(['get', 'post'], 'visor', 'Login::visor');
+$routes->match(['get', 'post'], 'juntas_venir', 'Login::juntas_venir');
+$routes->match(['get', 'post'], 'proyectos', 'Login::proyectos');
+$routes->match(['get', 'post'], 'nuevo_proyecto', 'Login::nuevo_proyecto');
+$routes->match(['get', 'post'], 'guarda_proyecto', 'Login::guarda_proyecto');
+$routes->match(['get', 'post'], 'signa_tareas', 'Login::signa_tareas');
+$routes->match(['get', 'post'], 'tareas_sin_asignar', 'Login::tareas_sin_asignar');
+$routes->match(['get', 'post'], 'asigna_tareas', 'Login::asigna_tareas');
+$routes->match(['get', 'post'], 'elimina_tarea', 'Login::elimina_tarea');
+$routes->match(['get', 'post'], 'fechas_proyecto', 'Login::fechas_proyecto');
+$routes->match(['get', 'post'], 'gantt', 'Login::gantt');
+$routes->match(['get', 'post'], 'detalla_proyecto', 'Login::detalla_proyecto');
+$routes->match(['get', 'post'], 'det_proyecto', 'Login::det_proyecto');
+$routes->match(['get', 'post'], 'subir2', 'Login::subir2');
+$routes->match(['get', 'post'], 'nueva_minuta', 'Login::nueva_minuta');
+$routes->match(['get', 'post'], 'guarda_junta', 'Login::guarda_junta');
+$routes->match(['get', 'post'], 'asigna', 'Login::asigna');
+$routes->match(['get', 'post'], 'guardar_actividad', 'Login::guardar_actividad');
+$routes->match(['get', 'post'], 'terminar_tema', 'Login::terminar_tema');
+$routes->match(['get', 'post'], 'pendientes_juntas_sin', 'Login::pendientes_juntas_sin');
+$routes->match(['get', 'post'], 'limpiar_archivo', 'Login::limpiar_archivo');
+$routes->match(['get', 'post'], 'elmina_actividad', 'Login::elmina_actividad');
+$routes->match(['get', 'post'], 'reagendar', 'Login::reagendar');
+$routes->match(['get', 'post'], 'guardar_reagendar', 'Login::guardar_reagendar');
+$routes->match(['get', 'post'], 'terminar_minuta', 'Login::terminar_minuta');
+$routes->match(['get', 'post'], 'modificar_actividad', 'Login::modificar_actividad');
+$routes->match(['get', 'post'], 'guarda_modificado', 'Login::guarda_modificado');
+$routes->match(['get', 'post'], 'eliminar_minuta', 'Login::eliminar_minuta');
+$routes->match(['get', 'post'], 'guarda_tareas', 'Login::guarda_tareas');
+$routes->match(['get', 'post'], 'agrega_participante', 'Login::agrega_participante');
+$routes->match(['get', 'post'], 'antes_participante', 'Login::antes_participante');
+$routes->match(['get', 'post'], 'carga_participantes', 'Login::carga_participantes');
+$routes->match(['get', 'post'], 'guardar_participante', 'Login::guardar_participante');
+$routes->match(['get', 'post'], 'borra_participante', 'Login::borra_participante');
+$routes->match(['get', 'post'], 'lista_empresas', 'Login::lista_empresas');
+$routes->match(['get', 'post'], 'editar_perfil', 'Login::editar_perfil');
+$routes->match(['get', 'post'], 'reporte_minutas', 'Login::reporte_minutas');
+$routes->match(['get', 'post'], 'documentos_borrados', 'Login::documentos_borrados');
+$routes->match(['get', 'post'], '8d', 'Login::analisis');
+$routes->match(['get', 'post'], '8d2', 'Login::analisis2');
+$routes->match(['get', 'post'], 'mejora', 'Login::mejora');
+$routes->match(['get', 'post'], 'nuevo_analisis', 'Login::nuevo_analisis');
+$routes->match(['get', 'post'], 'proyectos2', 'Login::proyectos2');
+$routes->match(['get', 'post'], 'business', 'Login::business');
+$routes->match(['get', 'post'], 'carga_trabajo', 'Login::carga_trabajo');
+$routes->match(['get', 'post'], 'solicitudes', 'Login::solicitudes');
+$routes->match(['get', 'post'], 'solicitud', 'Login::solicitud');
+$routes->match(['get', 'post'], 'agenda', 'Login::agenda');
+$routes->match(['get', 'post'], 'inicio', 'Login::inicio');
+$routes->match(['get', 'post'], 'avisos', 'Login::avisos');
+
+// Catch-all for login/* AJAX and remaining methods (must be last among login routes)
+$routes->match(['get', 'post'], 'login/(:segment)', 'Login::$1');
+$routes->match(['get', 'post'], 'login/(:segment)/(:any)', 'Login::$1/$2');
+$routes->match(['get', 'post'], 'login/(:segment)/(:any)/(:any)', 'Login::$1/$2/$3');
+$routes->match(['get', 'post'], 'login/(:segment)/(:any)/(:any)/(:any)', 'Login::$1/$2/$3/$4');

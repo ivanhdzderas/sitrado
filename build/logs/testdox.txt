@@ -1,0 +1,10 @@
+Documento View
+ [x] Documento view renders empty state
+ [x] Documento view renders rows without calling model
+ [x] Documento view hides download when not allowed
+ [x] Documento view shows tipo title with data set #0
+ [x] Documento view shows tipo title with data set #1
+ [x] Documento view shows tipo title with data set #2
+ [x] Documento view shows tipo title with data set #3
+ [x] Documento view shows tipo title with data set #4
+

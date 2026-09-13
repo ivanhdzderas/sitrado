@@ -1,0 +1,1 @@
+<div style="width: 10px; height: 10px; -moz-border-radius: 50%; -webkit-border-radius: 50%; border-radius: 50%; background: #F44336;"></div>

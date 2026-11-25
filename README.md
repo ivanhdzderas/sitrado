@@ -129,3 +129,7 @@ public/            # Web root: index.php, assets, PDF/Excel/mail libraries
 
 **Ivan Hernandez** · Full-stack developer (PHP, .NET, JavaScript)
 [GitHub](https://github.com/ivanhdzderas)
+
+## License
+
+Copyright (c) 2026 Ivan Hernandez. All rights reserved. The code is public for portfolio review only; see [LICENSE](LICENSE).

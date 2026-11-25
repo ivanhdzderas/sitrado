@@ -1,69 +1,131 @@
-# CodeIgniter 4 Application Starter
+# Sitrado
 
-## What is CodeIgniter?
+**Internal management platform for consulting firms**: controlled documents with approval workflows, meetings and minutes, projects with Gantt charts, and 8D problem-solving analysis, all in one web app.
 
-CodeIgniter is a PHP full-stack web framework that is light, fast, flexible and secure.
-More information can be found at the [official site](https://codeigniter.com).
+Built with **PHP 8 · CodeIgniter 4 · MySQL · Bootstrap · jQuery**.
 
-This repository holds a composer-installable app starter.
-It has been built from the
-[development repository](https://github.com/codeigniter4/CodeIgniter4).
+---
 
-More information about the plans for version 4 can be found in [CodeIgniter 4](https://forum.codeigniter.com/forumdisplay.php?fid=28) on the forums.
+## Why it exists
 
-You can read the [user guide](https://codeigniter.com/user_guide/)
-corresponding to the latest version of the framework.
+Quality-certified organizations (ISO-style management systems) need to prove that every procedure, policy and form is controlled: who requested a change, who approved it, who has read the current version, and what was agreed in each meeting. Sitrado replaces the shared folders, spreadsheets and email threads usually used for this with a single system that tracks the whole lifecycle.
 
-## Installation & updates
+## Features
 
-`composer create-project codeigniter4/appstarter` then `composer update` whenever
-there is a new release of the framework.
+### Document control
+- Documents organized in a configurable **hierarchy of groups, subgroups and menus**.
+- **Change request workflow**: request → review → approval, with configurable approvers per document and status tracking.
+- **Per-user and per-document permissions** (read / download / manage).
+- **Read receipts**: the system records who has viewed each document version.
+- Built-in viewer, search, downloads and an archive of deleted documents.
 
-When updating, check the release notes to see if there are any changes you might need to apply
-to your `app` folder. The affected files can be copied or merged from
-`vendor/codeigniter4/framework/app`.
+### Meetings and minutes
+- Schedule meetings with participants, agenda topics and meeting-room reservations.
+- Capture **minutes** during the meeting: agreements, owners and due dates.
+- Follow-up of **pending agreements** with alerts, rescheduling, and minutes exported to **PDF** and sent by **email**.
 
-## Setup
+### Projects
+- Projects and subprojects with task assignment and team workload view.
+- **Gantt chart** of activities and dates, notes and attachments per project.
 
-Copy `env` to `.env` and tailor for your app, specifically the baseURL
-and any database settings.
+### Continuous improvement
+- **8D analysis** (problem-solving method used in quality management): team, temporary, permanent and preventive solutions, plus verification.
+- Improvement proposals and **business cases** with alternatives.
 
-## Important Change with index.php
+### Administration
+- Multi-company setup, users with levels, and dynamic menus per role.
+- Company announcements with read tracking, shared calendar and attendance log.
+- Reports exported to Excel and PDF, with charts.
 
-`index.php` is no longer in the root of the project! It has been moved inside the *public* folder,
-for better security and separation of components.
+## Tech stack
 
-This means that you should configure your web server to "point" to your project's *public* folder, and
-not to the project root. A better practice would be to configure a virtual host to point there. A poor practice would be to point your web server to the project root and expect to enter *public/...*, as the rest of your logic and the
-framework are exposed.
+| Layer | Technology |
+|---|---|
+| Backend | PHP 8.2+, CodeIgniter 4.7 (MVC, Query Builder, sessions, CSRF) |
+| Database | MySQL 8 / MariaDB (51 tables, schema in [`database/schema.sql`](database/schema.sql)) |
+| Frontend | Bootstrap, jQuery, DataTables, Select2, SweetAlert2, jQuery Validate |
+| Documents & reports | FPDF (PDF), PHPExcel (Excel), JpGraph (charts) |
+| Email | PHPMailer over SMTP |
+| Security | `password_hash` / `password_verify`, CSRF protection, credentials kept in `.env` |
 
-**Please** read the user guide for a better explanation of how CI4 works!
+## Getting started
 
-## Repository Management
+**Requirements:** PHP 8.2+ (with `intl`, `mbstring`, `mysqli`), Composer, MySQL 8.
 
-We use GitHub issues, in our main repository, to track **BUGS** and to track approved **DEVELOPMENT** work packages.
-We use our [forum](http://forum.codeigniter.com) to provide SUPPORT and to discuss
-FEATURE REQUESTS.
+```bash
+git clone https://github.com/ivanhdzderas/sitrado.git
+cd sitrado
+composer install
 
-This repository is a "distribution" one, built by our release preparation script.
-Problems with it can be raised on our forum, or as issues in the main repository.
+# Configuration
+cp env .env
+```
 
-## Server Requirements
+Edit `.env`:
 
-PHP version 8.2 or higher is required, with the following extensions installed:
+```ini
+CI_ENVIRONMENT = development
+app.baseURL = 'http://localhost:8080/'
 
-- [intl](http://php.net/manual/en/intl.requirements.php)
-- [mbstring](http://php.net/manual/en/mbstring.installation.php)
+database.default.hostname = 127.0.0.1
+database.default.database = sitrado
+database.default.username = root
+database.default.password =
 
-> [!WARNING]
-> - The end of life date for PHP 7.4 was November 28, 2022.
-> - The end of life date for PHP 8.0 was November 26, 2023.
-> - The end of life date for PHP 8.1 was December 31, 2025.
-> - If you are still using below PHP 8.2, you should upgrade immediately.
-> - The end of life date for PHP 8.2 will be December 31, 2026.
+# Optional: SMTP used for meeting minutes and access notifications
+email.smtpHost  = smtp.example.com
+email.smtpUser  = notifications@example.com
+email.smtpPass  = your-password
+email.fromEmail = notifications@example.com
+```
 
-Additionally, make sure that the following extensions are enabled in your PHP:
+Create the database and load the schema:
 
-- json (enabled by default - don't turn it off)
-- [mysqlnd](http://php.net/manual/en/mysqlnd.install.php) if you plan to use MySQL
-- [libcurl](http://php.net/manual/en/curl.requirements.php) if you plan to use the HTTP\CURLRequest library
+```bash
+mysql -u root -e "CREATE DATABASE sitrado CHARACTER SET utf8mb4"
+mysql -u root sitrado < database/schema.sql
+```
+
+Create the first user (passwords are stored with `password_hash`):
+
+```bash
+php -r "echo password_hash('ChangeMe123', PASSWORD_DEFAULT), PHP_EOL;"
+```
+
+```sql
+INSERT INTO usuario (nombre, usuario, pass, tipo, juntas, img, plaza, departamento, puesto, nivel, correo, asistente, ingreso)
+VALUES ('Admin', 'admin', '<hash from above>', '1', 'SI', '', 0, 'Admin', 'Admin', '1', 'admin@example.com', 0, '2026-01-01');
+```
+
+Run it:
+
+```bash
+php spark serve
+```
+
+Open http://localhost:8080 and sign in. Uploaded documents are stored in `public/archivos/`, which is intentionally not versioned.
+
+## Project structure
+
+```
+app/
+├── Config/        # Routes, database, filters
+├── Controllers/   # Request handling
+├── Models/        # Data access (Query Builder)
+└── Views/         # Screens by module: archivos, juntas, proyectos, 8d, mejora...
+database/
+└── schema.sql     # Database structure (no data)
+public/            # Web root: index.php, assets, PDF/Excel/mail libraries
+```
+
+## Roadmap
+
+- Split the legacy `Login` controller, which still serves most routes, into one controller per module (`Documentos`, `Juntas`, `Proyectos`...), which are already scaffolded.
+- Replace the bundled PHPExcel and PHPMailer copies with Composer packages (PhpSpreadsheet, PHPMailer 6).
+- Convert `database/schema.sql` into CodeIgniter migrations and seeders with demo data.
+- Feature tests for the document approval workflow.
+
+## Author
+
+**Ivan Hernandez** · Full-stack developer (PHP, .NET, JavaScript)
+[GitHub](https://github.com/ivanhdzderas)

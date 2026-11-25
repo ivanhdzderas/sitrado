@@ -17,3 +17,6 @@
 !/writable/debugbar/index.html
 /writable/uploads/*
 !/writable/uploads/index.html
+
+# Uploaded documents (runtime data, never versioned)
+/public/archivos

@@ -67,3 +67,12 @@
 #--------------------------------------------------------------------
 
 # logger.threshold = 4
+
+#--------------------------------------------------------------------
+# MAIL (used by Login controller notifications)
+#--------------------------------------------------------------------
+
+# email.smtpHost = smtp.example.com
+# email.smtpUser = notifications@example.com
+# email.smtpPass = 
+# email.fromEmail = notifications@example.com
